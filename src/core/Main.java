@@ -11,6 +11,7 @@ public class Main {
     public static final int FRAMESIZE_W = 1200;
     public static final int FRAMESIZE_H = 900;
     private JFrame frame;
+    public static Input input;
 
     public static void main(String[] args){
         (new Main()).run();
@@ -23,6 +24,8 @@ public class Main {
         frame.getContentPane().setPreferredSize(new Dimension(FRAMESIZE_W, FRAMESIZE_H));//ウィンドウの大きさ(内側)を決める
         frame.pack();
         frame.setVisible(true); //ウィンドウを可視化する
+
+        input = new Input(frame);
     }
 
     public void run(){
