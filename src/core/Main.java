@@ -6,12 +6,16 @@ package core;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferStrategy;
+
+import main.TitleScene;
 
 public class Main {
     public static final int FRAMESIZE_W = 1200;
     public static final int FRAMESIZE_H = 900;
     private JFrame frame;
     public static Input input;
+    public BufferStrategy buf;
 
     public static void main(String[] args){
         (new Main()).run();
@@ -26,9 +30,22 @@ public class Main {
         frame.setVisible(true); //ウィンドウを可視化する
 
         input = new Input(frame);
+
+        frame.createBufferStrategy(2);
+        buf = frame.getBufferStrategy();
+
+        SceneManager.changeScene(new TitleScene());
     }
 
     public void run(){
         initialize();
+        while (true){
+            input.update();
+            Graphics2D g = (Graphics2D) buf.getDrawGraphics();
+            SceneManager.step();
+            SceneManager.draw(g);
+            buf.show();
+            g.dispose();
+        }
     }
 }
