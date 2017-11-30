@@ -11,8 +11,8 @@ import java.awt.image.BufferStrategy;
 import main.TitleScene;
 
 public class Main {
-    public static final int FRAMESIZE_W = 1200;
-    public static final int FRAMESIZE_H = 900;
+    public static int FRAMESIZE_W = 1200;
+    public static int FRAMESIZE_H = 900;
     private JFrame frame;
     public static Input input;
     public static Resource resource;
@@ -42,6 +42,11 @@ public class Main {
     public void run(){
         initialize();
         while (true){
+            Dimension size = frame.getContentPane().getSize();
+            System.out.println("w = " + size.width);
+            System.out.println("h = " + size.height);
+            FRAMESIZE_W = size.width;
+            FRAMESIZE_H = size.height;
             input.update();
             Graphics2D g = (Graphics2D) buf.getDrawGraphics();
             SceneManager.step();

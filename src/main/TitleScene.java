@@ -27,12 +27,12 @@ public class TitleScene extends Scene {
     @Override
     public void draw(Graphics2D g) {
         super.draw(g);
-        g.drawImage(titleImage, 50, 350, 1000, 400, null);
-        //g.setColor(Color.white);
-        //g.fillRect(0, 0, 600, 800);
+        g.drawImage(titleImage, (int)((float)0.5*Main.FRAMESIZE_W - 500) , (int)((float)0.5*Main.FRAMESIZE_H - 200), 1000, 400, null);
         g.setColor(Color.black);
         g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, 100));
-        g.drawString("たいとる", 400, 300);
+        g.drawString("たいとる", (int)((float)0.5*Main.FRAMESIZE_W - 200), (int)((float) 0.25*Main.FRAMESIZE_H - 50));
+        g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, 50));
+        g.drawString("PRESS ENTER", (int)((float)0.5*Main.FRAMESIZE_W - 155), (int)((float) 0.85*Main.FRAMESIZE_H));
     }
 
     @Override
