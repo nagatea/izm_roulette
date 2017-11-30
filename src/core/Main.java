@@ -15,6 +15,7 @@ public class Main {
     public static final int FRAMESIZE_H = 900;
     private JFrame frame;
     public static Input input;
+    public static Resource resource;
     public BufferStrategy buf;
 
     public static void main(String[] args){
@@ -30,6 +31,7 @@ public class Main {
         frame.setVisible(true); //ウィンドウを可視化する
 
         input = new Input(frame);
+        resource = new Resource();
 
         frame.createBufferStrategy(2);
         buf = frame.getBufferStrategy();
