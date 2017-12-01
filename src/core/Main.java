@@ -6,6 +6,7 @@ package core;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 
 import main.TitleScene;
@@ -56,6 +57,9 @@ public class Main {
             SceneManager.draw(g);
             buf.show();
             g.dispose();
+            if (Main.input.key.isJustPressed(KeyEvent.VK_ESCAPE)){
+                System.exit(0);
+            }
         }
     }
 }

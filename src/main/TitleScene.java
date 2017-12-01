@@ -19,9 +19,6 @@ public class TitleScene extends Scene {
     @Override
     public void step() {
         super.step();
-        if (Main.input.key.isJustPressed(KeyEvent.VK_ESCAPE)){
-            System.exit(0);
-        }
         if (Main.input.key.isJustPressed(KeyEvent.VK_ENTER)){
             SceneManager.changeScene(new MainScene());
         }
