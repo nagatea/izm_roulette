@@ -49,6 +49,9 @@ public class Main {
             FRAMESIZE_H = size.height;
             input.update();
             Graphics2D g = (Graphics2D) buf.getDrawGraphics();
+            g.translate(0, frame.getInsets().top);
+            g.setColor(Color.WHITE);
+            g.clearRect(0, 0, FRAMESIZE_W, FRAMESIZE_H); //シーンの初期化用
             SceneManager.step();
             SceneManager.draw(g);
             buf.show();
