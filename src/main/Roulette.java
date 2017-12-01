@@ -33,6 +33,9 @@ public class Roulette {
     public void draw(Graphics2D g){
         switch (chapter){
             case READY:
+                g.setColor(Color.BLACK);
+                g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, 50));
+                g.drawString("READY", (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.5*Main.FRAMESIZE_H));
                 break;
             case RUN:
                 break;
