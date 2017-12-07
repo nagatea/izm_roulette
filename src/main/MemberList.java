@@ -16,7 +16,7 @@ public class MemberList {
             File f = new File("test/sample.csv");
             BufferedReader br = new BufferedReader(new FileReader(f));
 
-            ArrayList<String[]> data = new ArrayList<String[]>();
+            data = new ArrayList<String[]>();
             String line = br.readLine();
             for (int row = 0; line != null ; row++) {
                 data.add(line.split(",", 0));
