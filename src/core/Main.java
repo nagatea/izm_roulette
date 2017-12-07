@@ -44,8 +44,8 @@ public class Main {
         initialize();
         while (true){
             Dimension size = frame.getContentPane().getSize();
-            System.out.println("w = " + size.width);
-            System.out.println("h = " + size.height);
+            //System.out.println("w = " + size.width);
+            //System.out.println("h = " + size.height);
             FRAMESIZE_W = size.width;
             FRAMESIZE_H = size.height;
             input.update();
