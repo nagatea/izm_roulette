@@ -5,6 +5,7 @@ import core.SceneManager;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.*;
 
@@ -19,6 +20,7 @@ public class Roulette {
     public String nowNumber = "0";
     public int remain;
     public int count;
+    private BufferedImage image;
     public enum Chapter{
         PREPARE, READY, RUN, STOP, CHANGE,
     }
@@ -42,6 +44,7 @@ public class Roulette {
                 }else{
                     data = memberList.getList();
                 }
+                image = Main.resource.image.load(data[2]);
                 System.out.println(data[0] + data[1] + data[2]);
                 chapter = Chapter.READY;
                 break;
@@ -95,6 +98,8 @@ public class Roulette {
                 g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, 50));
                 g.drawString("STOP", (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.5*Main.FRAMESIZE_H));
                 g.drawString(data[0], (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.7*Main.FRAMESIZE_H));
+                g.drawString(data[1], (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.8*Main.FRAMESIZE_H));
+                g.drawImage(image, (int)((float)0.8*Main.FRAMESIZE_W - 200) , (int)((float)0.5*Main.FRAMESIZE_H - 200), 400, 400, null);
                 break;
             case CHANGE:
                 g.setColor(Color.BLACK);
