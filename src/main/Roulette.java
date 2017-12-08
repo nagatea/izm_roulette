@@ -18,7 +18,7 @@ public class Roulette {
     public static String[] data;
     public String[] number;
     public String nowNumber = "0";
-    public int remain;
+    public static int remain;
     public int count;
     private BufferedImage image;
     public enum Chapter{
@@ -29,7 +29,7 @@ public class Roulette {
     public Roulette(){
         memberList = new MemberList();
         list = memberList.getMemberList();
-        remain = memberList.getSize();
+        remain = memberList.getSize() + 1;
         memberList.shuffleList();
         chapter = Chapter.PREPARE;
     }
@@ -38,7 +38,7 @@ public class Roulette {
         switch (chapter){
             case PREPARE:
                 number = memberList.getNumber();
-                if (remain > 1){
+                if (remain >= 1){
                     data = memberList.popList();
                     remain--;
                 }else{

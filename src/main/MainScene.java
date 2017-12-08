@@ -23,6 +23,7 @@ public class MainScene extends Scene {
     public void step() {
         super.step();
         roulette.step();
+
     }
 
     @Override
@@ -30,7 +31,7 @@ public class MainScene extends Scene {
         super.draw(g);
         g.setColor(Color.BLACK);
         g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, 50));
-        g.drawString("This is MainScene", (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.2*Main.FRAMESIZE_H));
+        g.drawString("This is MainScene(残り"+ Roulette.remain +"人)", (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.2*Main.FRAMESIZE_H));
         roulette.draw(g);
     }
 
