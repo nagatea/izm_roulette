@@ -22,7 +22,7 @@ public class Roulette {
     public int count;
     private BufferedImage image;
     public enum Chapter{
-        PREPARE, READY, RUN, STOP, CHANGE,
+        PREPARE, READY, RUN, STOP, CHANGE,END,
     }
     public static Chapter chapter;
 
@@ -38,11 +38,13 @@ public class Roulette {
         switch (chapter){
             case PREPARE:
                 number = memberList.getNumber();
-                if (remain >= 1){
+                if (remain > 1){
                     data = memberList.popList();
                     remain--;
                 }else{
-                    data = memberList.getList();
+                    remain--;
+                    chapter = Chapter.END;
+                    break;
                 }
                 image = Main.resource.image.load(data[2]);
                 System.out.println(data[0] + data[1] + data[2]);
@@ -68,15 +70,12 @@ public class Roulette {
                     chapter = Chapter.PREPARE;
                 }
                 break;
+            case END:
+                break;
         }
     }
 
     public void draw(Graphics2D g){
-        if (count > 60){
-            count = 0;
-        }else {
-            count++;
-        }
         switch (chapter){
             case READY:
                 g.setColor(Color.BLACK);
@@ -84,11 +83,16 @@ public class Roulette {
                 g.drawString("READY", (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.5*Main.FRAMESIZE_H));
                 break;
             case RUN:
+                if (count > 60){
+                    count = 0;
+                }else {
+                    count++;
+                }
                 g.setColor(Color.BLACK);
                 g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, 50));
                 g.drawString("RUN", (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.5*Main.FRAMESIZE_H));
                 if(count%20 == 0){
-                    int i = (int)(Math.random()*(memberList.getSize()));
+                    int i = (int)(Math.random()*(memberList.getSize() + 1));
                     nowNumber = number[i];
                 }
                 g.drawString(nowNumber, (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.7*Main.FRAMESIZE_H));
@@ -105,6 +109,11 @@ public class Roulette {
                 g.setColor(Color.BLACK);
                 g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, 50));
                 g.drawString("CHANGE", (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.5*Main.FRAMESIZE_H));
+                break;
+            case END:
+                g.setColor(Color.BLACK);
+                g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, 50));
+                g.drawString("END", (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.5*Main.FRAMESIZE_H));
                 break;
         }
     }
