@@ -25,9 +25,11 @@ public class Main {
 
     private void initialize(){
         frame = new JFrame("izm_roulette");
+        //frame.setUndecorated(true);//ウィンドウの枠を消す
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //×ボタンを押したときの処理
         //frame.setResizable(true); //サイズ変更の可否
         frame.getContentPane().setPreferredSize(new Dimension(FRAMESIZE_W, FRAMESIZE_H));//ウィンドウの大きさ(内側)を決める
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);//最大化
         frame.pack();
         frame.setVisible(true); //ウィンドウを可視化する
 
