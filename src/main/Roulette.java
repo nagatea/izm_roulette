@@ -80,13 +80,15 @@ public class Roulette {
     }
 
     public void draw(Graphics2D g){
-        g.setColor(Color.GRAY);
-        g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(5)));
-        string = "Chapter = " + chapter.toString();
-        g.drawString(string, location.getWidthFontLocation(g, string, 1, "left"), location.getHeightFontLocation(g, 5));
-        g.drawString(nextData, location.getWidthFontLocation(g, nextData, 1, "left"), location.getHeightFontLocation(g, 10));
-        string = "Count = " + count;
-        g.drawString(string, location.getWidthFontLocation(g, string, 1, "left"), location.getHeightFontLocation(g, 15));
+        if (Main.isDebug){
+            g.setColor(Color.GRAY);
+            g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(5)));
+            string = "Chapter = " + chapter.toString();
+            g.drawString(string, location.getWidthFontLocation(g, string, 1, "left"), location.getHeightFontLocation(g, 5));
+            g.drawString(nextData, location.getWidthFontLocation(g, nextData, 1, "left"), location.getHeightFontLocation(g, 10));
+            string = "Count = " + count;
+            g.drawString(string, location.getWidthFontLocation(g, string, 1, "left"), location.getHeightFontLocation(g, 15));
+        }
         switch (chapter){
             case READY:
                 g.setColor(Color.BLACK);

@@ -12,6 +12,7 @@ import java.awt.image.BufferStrategy;
 import main.TitleScene;
 
 public class Main {
+    public static final boolean isDebug = true;
     public static int FRAMESIZE_W = 1200;
     public static int FRAMESIZE_H = 900;
     private JFrame frame;
