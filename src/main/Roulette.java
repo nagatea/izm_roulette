@@ -1,5 +1,6 @@
 package main;
 
+import core.Location;
 import core.Main;
 import core.SceneManager;
 
@@ -20,9 +21,12 @@ public class Roulette {
     public String nowNumber = "0";
     public static int remain;
     public int count;
+    private Location location = new Location();
+    private String string;
+    private String nextData = "";
     private BufferedImage image;
     public enum Chapter{
-        PREPARE, READY, RUN, STOP, CHANGE,END,
+        PREPARE, READY, RUN, STOP, CHANGE, END,
     }
     public static Chapter chapter;
 
@@ -47,7 +51,7 @@ public class Roulette {
                     break;
                 }
                 image = Main.resource.image.load(data[2]);
-                System.out.println(data[0] + data[1] + data[2]);
+                nextData = "Next =" + data[0] + data[1] + data[2];
                 chapter = Chapter.READY;
                 break;
             case READY:
@@ -76,11 +80,19 @@ public class Roulette {
     }
 
     public void draw(Graphics2D g){
+        g.setColor(Color.GRAY);
+        g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(5)));
+        string = "Chapter = " + chapter.toString();
+        g.drawString(string, location.getWidthFontLocation(g, string, 1, "left"), location.getHeightFontLocation(g, 5));
+        g.drawString(nextData, location.getWidthFontLocation(g, nextData, 1, "left"), location.getHeightFontLocation(g, 10));
+        string = "Count = " + count;
+        g.drawString(string, location.getWidthFontLocation(g, string, 1, "left"), location.getHeightFontLocation(g, 15));
         switch (chapter){
             case READY:
                 g.setColor(Color.BLACK);
-                g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, 50));
-                g.drawString("READY", (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.5*Main.FRAMESIZE_H));
+                g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(40)));
+                string = "??";
+                g.drawString(string, location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 40));
                 break;
             case RUN:
                 if (count > 60){
@@ -89,31 +101,27 @@ public class Roulette {
                     count++;
                 }
                 g.setColor(Color.BLACK);
-                g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, 50));
-                g.drawString("RUN", (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.5*Main.FRAMESIZE_H));
                 if(count%20 == 0){
                     int i = (int)(Math.random()*(memberList.getSize() + 1));
                     nowNumber = number[i];
                 }
-                g.drawString(nowNumber, (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.7*Main.FRAMESIZE_H));
+                g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(40)));
+                g.drawString(nowNumber, location.getWidthFontLocation(g, nowNumber, 50), location.getHeightFontLocation(g, 40));
                 break;
             case STOP:
                 g.setColor(Color.BLACK);
-                g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, 50));
-                g.drawString("STOP", (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.5*Main.FRAMESIZE_H));
-                g.drawString(data[0], (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.7*Main.FRAMESIZE_H));
-                g.drawString(data[1], (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.8*Main.FRAMESIZE_H));
-                g.drawImage(image, (int)((float)0.8*Main.FRAMESIZE_W - 200) , (int)((float)0.5*Main.FRAMESIZE_H - 200), 400, 400, null);
+                g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(40)));
+                g.drawString(data[0], location.getWidthFontLocation(g, data[0], 50), location.getHeightFontLocation(g, 40));
+                g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(15)));
+                g.drawString(data[1], location.getWidthFontLocation(g, data[1], 50), location.getHeightFontLocation(g, 80));
+                g.drawImage(image, location.getWidthLocation(80, location.getWidthLocation(20)/2), location.getHeightLocation(40, location.getHeightLocation(20)/2), location.getWidthLocation(20), location.getWidthLocation(20), null);
                 break;
             case CHANGE:
                 g.setColor(Color.BLACK);
-                g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, 50));
-                g.drawString("CHANGE", (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.5*Main.FRAMESIZE_H));
+                g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(40)));
+                g.drawString(data[0], location.getWidthFontLocation(g, data[0], 50), location.getHeightFontLocation(g, 40));
                 break;
             case END:
-                g.setColor(Color.BLACK);
-                g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, 50));
-                g.drawString("END", (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.5*Main.FRAMESIZE_H));
                 break;
         }
     }
