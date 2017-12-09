@@ -79,7 +79,10 @@ public class Location {
     }
 
     public int getAnimation(int start, int end, double per){
-        int res = (int)(start - ((start - end)/100)*per);
+        if (per > 100){
+            per = 100;
+        }
+        int res = (int)(start - ((double)(start - end)/100)*per);
         return res;
     }
 
