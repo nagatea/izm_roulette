@@ -15,28 +15,28 @@ public class Location {
         height = Main.FRAMESIZE_H;
     }
 
-    public int getWidthLocation(int per){
-        width = (int)((float)per*Main.FRAMESIZE_W/100);
+    public int getWidthLocation(double per){
+        width = (int)(per*Main.FRAMESIZE_W/100);
         return width;
     }
 
-    public int getHeightLocation(int per){
-        height = (int)((float)per*Main.FRAMESIZE_H/100);
+    public int getHeightLocation(double per){
+        height = (int)(per*Main.FRAMESIZE_H/100);
         return height;
     }
 
-    public int getWidthLocation(int per, int offSet){
-        width = (int)((float)per*Main.FRAMESIZE_W/100 - offSet);
+    public int getWidthLocation(double per, int offSet){
+        width = (int)(per*Main.FRAMESIZE_W/100 - offSet);
         return width;
     }
 
-    public int getHeightLocation(int per, int offSet){
-        height = (int)((float)per*Main.FRAMESIZE_H/100 - offSet);
+    public int getHeightLocation(double per, int offSet){
+        height = (int)(per*Main.FRAMESIZE_H/100 - offSet);
         return height;
     }
 
-    public int getFontSize(int per){
-        height = (int)((float)per*Main.FRAMESIZE_H/100);
+    public int getFontSize(double per){
+        height = (int)(per*Main.FRAMESIZE_H/100);
         return height;
     }
 
@@ -52,7 +52,7 @@ public class Location {
         return res;
     }
 
-    public int getWidthFontLocation(Graphics2D g, String str, int per){
+    public int getWidthFontLocation(Graphics2D g, String str, double per){
         int res = getWidthLocation(per, getWidthFontSize(g, str)/2);
         return res;
     }
