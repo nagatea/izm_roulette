@@ -77,4 +77,10 @@ public class Location {
         int res = getHeightLocation(per, -getHeightFontSize(g)/2);
         return res;
     }
+
+    public int getAnimation(int start, int end, double per){
+        int res = (int)(start - ((start - end)/100)*per);
+        return res;
+    }
+
 }
