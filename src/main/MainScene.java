@@ -1,5 +1,6 @@
 package main;
 
+import core.Location;
 import core.Main;
 import core.Scene;
 
@@ -13,6 +14,7 @@ import java.awt.event.KeyEvent;
  */
 public class MainScene extends Scene {
     private Roulette roulette;
+    private Location location = new Location();
     @Override
     public void initialize() {
         super.initialize();
@@ -30,8 +32,9 @@ public class MainScene extends Scene {
     public void draw(Graphics2D g) {
         super.draw(g);
         g.setColor(Color.BLACK);
-        g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, 50));
-        g.drawString("This is MainScene(残り"+ Roulette.remain +"人)", (int)((float)0.5* Main.FRAMESIZE_W - 155), (int)((float) 0.2*Main.FRAMESIZE_H));
+        g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(5)));
+        String string = "This is MainScene(残り"+ Roulette.remain +"人)";
+        g.drawString(string, location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 10));
         roulette.draw(g);
     }
 
