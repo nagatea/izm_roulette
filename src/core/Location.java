@@ -57,6 +57,22 @@ public class Location {
         return res;
     }
 
+    public int getWidthFontLocation(Graphics2D g, String str, double per, String align){
+        int res;
+        switch (align){
+            case "left":
+                res = getWidthLocation(per);
+                break;
+            case "right":
+                res = getWidthLocation(per, getWidthFontSize(g, str));
+                break;
+            default: //center
+                res = getWidthLocation(per, getWidthFontSize(g, str)/2);
+                break;
+        }
+        return res;
+    }
+
     public int getHeightFontLocation(Graphics2D g, int per){
         int res = getHeightLocation(per, getHeightFontSize(g)/2);
         return res;
