@@ -74,7 +74,7 @@ public class Location {
     }
 
     public int getHeightFontLocation(Graphics2D g, int per){
-        int res = getHeightLocation(per, getHeightFontSize(g)/2);
+        int res = getHeightLocation(per, -getHeightFontSize(g)/2);
         return res;
     }
 }

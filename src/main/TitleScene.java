@@ -33,7 +33,7 @@ public class TitleScene extends Scene {
         g.setColor(Color.black);
         g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(10)));
         string = "たいとる";
-        g.drawString(string, location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 25));
+        g.drawString(string, location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 15));
         g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(3.5)));
         string = "PRESS ENTER";
         g.drawString("PRESS ENTER", location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 85));

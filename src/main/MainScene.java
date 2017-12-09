@@ -34,7 +34,7 @@ public class MainScene extends Scene {
         g.setColor(Color.BLACK);
         g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(5)));
         String string = "This is MainScene(残り"+ Roulette.remain +"人)";
-        g.drawString(string, location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 10));
+        g.drawString(string, location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 5));
         roulette.draw(g);
     }
 
