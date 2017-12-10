@@ -1,5 +1,7 @@
 package main;
 
+import core.Main;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,9 +11,14 @@ import java.util.Collections;
  */
 public class MemberList {
     public ArrayList<String[]> memberList;
+    private File f;
     public MemberList(){
         try{
-            File f = new File("test/sample.csv");
+            if (Main.isDebug){
+                f = new File("test/sample.csv");
+            }else{
+                f = new File("res/list.csv");
+            }
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f),"Shift-JIS"));
 
             memberList = new ArrayList<String[]>();
