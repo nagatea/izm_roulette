@@ -12,7 +12,7 @@ import java.awt.image.BufferStrategy;
 import main.TitleScene;
 
 public class Main {
-    public static final boolean isDebug = true;
+    public static final boolean isDebug = false;
     public static int FRAMESIZE_W = 1200;
     public static int FRAMESIZE_H = 900;
     private JFrame frame;
@@ -26,7 +26,7 @@ public class Main {
 
     private void initialize(){
         frame = new JFrame("izm_roulette");
-        //frame.setUndecorated(true);//ウィンドウの枠を消す
+        frame.setUndecorated(true);//ウィンドウの枠を消す
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //×ボタンを押したときの処理
         //frame.setResizable(true); //サイズ変更の可否
         frame.getContentPane().setPreferredSize(new Dimension(FRAMESIZE_W, FRAMESIZE_H));//ウィンドウの大きさ(内側)を決める
@@ -41,6 +41,14 @@ public class Main {
         buf = frame.getBufferStrategy();
 
         SceneManager.changeScene(new TitleScene());
+
+        /* 使えるフォント一覧を表示する
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Font fonts[] = ge.getAllFonts();
+        for(int i=0; i<fonts.length; i++){
+            System.out.println(fonts[i].getName());
+        }
+        */
     }
 
     public void run(){
