@@ -149,36 +149,26 @@ public class Roulette {
                 }else if (count >= 0){
                     count++;
                 }
+                g.setStroke(wideStroke);
+                g.drawRect(location.getWidthLocation(50, location.getWidthLocation(25)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(25), location.getHeightLocation(65));
+                g.drawImage(image, location.getWidthLocation(50, location.getWidthLocation(25)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(25), location.getHeightLocation(65), null);
+                string = data[1];
                 if(count <= 300){
-                    g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(20)));
-                    g.drawString(data[0], location.getWidthFontLocation(g, data[0], 20), location.getHeightFontLocation(g, 80));
-                    g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(15)));
-                    if(data[1].length() > (count)/25){
+                    //g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(20)));
+                    //g.drawString(data[0], location.getWidthFontLocation(g, data[0], 20), location.getHeightFontLocation(g, 80));
+                    g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(15)));
+                    if(string.length() > (count)/25){
                         stringSize = (count)/25;
                     }else {
-                        stringSize = data[1].length();
+                        stringSize = string.length();
                     }
-                    g.drawString(data[1].substring(0, stringSize), location.getWidthFontLocation(g, data[1], 50), location.getHeightFontLocation(g, 80));
-                    g.setStroke(wideStroke);
-                    g.drawRect(location.getWidthLocation(50, location.getWidthLocation(25)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(25), location.getHeightLocation(65));
-                    g.drawImage(image, location.getWidthLocation(50, location.getWidthLocation(25)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(25), location.getHeightLocation(65), null);
-                }else if(count <= 600){
-                    g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(20)));
-                    g.drawString(data[0], location.getWidthFontLocation(g, data[0], 20), location.getHeightFontLocation(g, 80));
-                    g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(15)));
-                    g.drawString(data[1], location.getWidthFontLocation(g, data[1], 50), location.getHeightFontLocation(g, 80));
-                    g.setStroke(wideStroke);
-                    g.drawRect(location.getWidthLocation(50, location.getWidthLocation(25)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(25), location.getHeightLocation(65));
-                    g.drawImage(image, location.getWidthLocation(50, location.getWidthLocation(25)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(25), location.getHeightLocation(65), null);
+                    g.drawString(string.substring(0, stringSize), location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 80));
                 }else {
-                    g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(20)));
-                    g.drawString(data[0], location.getWidthFontLocation(g, data[0], 20), location.getHeightFontLocation(g, 80));
-                    g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(15)));
-                    g.drawString(data[1], location.getWidthFontLocation(g, data[1], 50), location.getHeightFontLocation(g, 80));
-                    g.setStroke(wideStroke);
-                    g.drawRect(location.getWidthLocation(50, location.getWidthLocation(25)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(25), location.getHeightLocation(65));
-                    g.drawImage(image, location.getWidthLocation(50, location.getWidthLocation(25)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(25), location.getHeightLocation(65), null);
-                }
+                    //g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(20)));
+                    //g.drawString(data[0], location.getWidthFontLocation(g, data[0], 20), location.getHeightFontLocation(g, 80));
+                    g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(15)));
+                    g.drawString(string, location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 80));
+                    }
                 break;
             case CHANGE:
                 break;
