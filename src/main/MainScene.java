@@ -32,9 +32,9 @@ public class MainScene extends Scene {
     public void draw(Graphics2D g) {
         super.draw(g);
         g.setColor(Color.BLACK);
-        g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(5)));
-        String string = "This is MainScene(残り"+ Roulette.remain +"人)";
-        g.drawString(string, location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 5));
+        //g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(5)));
+        //String string = "This is MainScene(残り"+ Roulette.remain +"人)";
+        //g.drawString(string, location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 5));
         roulette.draw(g);
     }
 
