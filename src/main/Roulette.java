@@ -25,12 +25,16 @@ public class Roulette {
     BasicStroke wideStroke = new BasicStroke(4.0f);
     private Location location = new Location();
     private String string;
+    private String time;
     private String nextData = "";
     private BufferedImage image;
     public enum Chapter{
         PREPARE, READY, RUN, STOP, SHOW, CHANGE, END,
     }
     public static Chapter chapter;
+    private RouletteTimer timer;
+    private Boolean isTimerInit = true;
+    private Thread timerThread;
 
     public Roulette(){
         memberList = new MemberList();
@@ -74,10 +78,13 @@ public class Roulette {
                 break;
             case SHOW:
                 if (Main.input.key.isJustPressed(KeyEvent.VK_ENTER)){
-                    chapter = Chapter.PREPARE;//CHANGEにいかない
+                    chapter = Chapter.CHANGE;
                 }
                 break;
             case CHANGE:
+                if (!isTimerInit){
+                    isTimerInit = true;
+                }
                 if (Main.input.key.isJustPressed(KeyEvent.VK_ENTER)){
                     chapter = Chapter.PREPARE;
                 }
@@ -144,12 +151,12 @@ public class Roulette {
                 break;
             case SHOW:
                 g.setColor(Color.BLACK);
-                g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(10)));
-                g.drawString("出席番号", location.getWidthFontLocation(g, "出席番号", 18), location.getHeightFontLocation(g, 25));
-                g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(30)));
-                g.drawString(data[0], location.getWidthFontLocation(g, data[0], 18), location.getHeightFontLocation(g, 45));
-                //g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(20)));
-                //g.drawString(data[0], location.getWidthFontLocation(g, data[0], 18), location.getHeightFontLocation(g, 80));
+                //g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(10)));
+                //g.drawString("出席番号", location.getWidthFontLocation(g, "出席番号", 18), location.getHeightFontLocation(g, 25));
+                //g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(30)));
+                //g.drawString(data[0], location.getWidthFontLocation(g, data[0], 18), location.getHeightFontLocation(g, 45));
+                g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(20)));
+                g.drawString(data[0], location.getWidthFontLocation(g, data[0], 18), location.getHeightFontLocation(g, 80));
                 if (count >= 1000){
                     count = 1000;
                 }else if (count >= 0){
@@ -160,6 +167,9 @@ public class Roulette {
                 g.drawImage(image, location.getWidthLocation(50, location.getWidthLocation(25)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(25), location.getHeightLocation(65), null);
                 string = data[1];
                 if(count <= 300){
+                    g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(20)));
+                    time = "01:00";
+                    g.drawString(time, location.getWidthFontLocation(g, time, 82), location.getHeightFontLocation(g, 45));
                     //g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(20)));
                     //g.drawString(data[0], location.getWidthFontLocation(g, data[0], 20), location.getHeightFontLocation(g, 80));
                     g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(15)));
@@ -170,6 +180,15 @@ public class Roulette {
                     }
                     g.drawString(string.substring(0, stringSize), location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 80));
                 }else {
+                    if (isTimerInit){
+                        timer = new RouletteTimer(1, 0);
+                        timerThread = new Thread(timer);
+                        timerThread.start();
+                        isTimerInit = false;
+                    }
+                    g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(20)));
+                    time = timer.getTimer();
+                    g.drawString(time, location.getWidthFontLocation(g, time, 82), location.getHeightFontLocation(g, 45));
                     //g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(20)));
                     //g.drawString(data[0], location.getWidthFontLocation(g, data[0], 20), location.getHeightFontLocation(g, 80));
                     g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(15)));
