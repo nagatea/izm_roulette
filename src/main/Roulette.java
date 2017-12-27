@@ -144,6 +144,12 @@ public class Roulette {
                 break;
             case SHOW:
                 g.setColor(Color.BLACK);
+                g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(10)));
+                g.drawString("出席番号", location.getWidthFontLocation(g, "出席番号", 18), location.getHeightFontLocation(g, 25));
+                g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(30)));
+                g.drawString(data[0], location.getWidthFontLocation(g, data[0], 18), location.getHeightFontLocation(g, 45));
+                //g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(20)));
+                //g.drawString(data[0], location.getWidthFontLocation(g, data[0], 18), location.getHeightFontLocation(g, 80));
                 if (count >= 1000){
                     count = 1000;
                 }else if (count >= 0){
