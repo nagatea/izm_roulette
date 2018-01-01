@@ -121,6 +121,12 @@ public class Roulette {
                 if(count%10 == 0){
                     int i = (int)(Math.random()*(memberList.getSize() + 1));
                     nowNumber = number[i];
+                    int counter = 0;
+                    while(nowNumber.equals("??") && counter < 10){
+                        i = (int)(Math.random()*(memberList.getSize() + 1));
+                        nowNumber = number[i];
+                        counter++;
+                    }
                 }
                 g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(50)));
                 g.drawString(nowNumber, location.getWidthFontLocation(g, nowNumber, 50), location.getHeightFontLocation(g, 40));
@@ -141,11 +147,12 @@ public class Roulette {
                     g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(50)));
                     g.drawString(data[0], location.getWidthFontLocation(g, data[0], 50), location.getHeightFontLocation(g, 40));
                     g.setStroke(wideStroke);
-                    g.drawRect(location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(25), count-200)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(25), count-200), location.getHeightLocation(65));
+                    g.drawRect(location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-200)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-200), location.getHeightLocation(65));
+
                     g.drawImage(image, location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-200)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-200), location.getHeightLocation(65), null);
                 }else{
                     g.setStroke(wideStroke);
-                    g.drawRect(location.getWidthLocation(50, location.getWidthLocation(25)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(25), location.getHeightLocation(65));
+                    g.drawRect(location.getWidthLocation(50, location.getWidthLocation(34)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(34), location.getHeightLocation(65));
                     g.drawImage(image, location.getWidthLocation(50, location.getWidthLocation(34)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(34), location.getHeightLocation(65), null);
                 }
                 break;
@@ -163,7 +170,7 @@ public class Roulette {
                     count++;
                 }
                 g.setStroke(wideStroke);
-                g.drawRect(location.getWidthLocation(50, location.getWidthLocation(25)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(25), location.getHeightLocation(65));
+                g.drawRect(location.getWidthLocation(50, location.getWidthLocation(34)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(34), location.getHeightLocation(65));
                 g.drawImage(image, location.getWidthLocation(50, location.getWidthLocation(34)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(34), location.getHeightLocation(65), null);
                 string = data[1];
                 if(count <= 300){
