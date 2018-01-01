@@ -41,14 +41,39 @@ public class MemberList {
         Collections.shuffle(memberList);
     }
 
+    public int nowPriority(){
+        int res = 100; //適当な大きい値
+        int tmp;
+        String[] data;
+        for (int i = 0; i < getSize(); i++) {
+            data = memberList.get(i);
+            tmp = Integer.parseInt(data[3]);
+            if(tmp < res){
+                res = tmp;
+            }
+        }
+        return res;
+    }
+
     public int getSize(){
         int res = memberList.size();
         return res;
     }
 
     public String[] popList(){
-        String[] res = memberList.remove(0);
-        return res;
+        String[] res;
+        int nowPriority = nowPriority();
+        int resPrioroty;
+        for (int i = 0; i < getSize(); i++) {
+            res = memberList.remove(0);
+            resPrioroty = Integer.parseInt(res[3]);
+            if(resPrioroty == nowPriority){
+                return res;
+            } else {
+                memberList.add(res);
+            }
+        }
+        throw new IllegalArgumentException("Error");
     }
 
     public String[] getList(){
