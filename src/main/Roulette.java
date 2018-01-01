@@ -28,6 +28,7 @@ public class Roulette {
     private String time;
     private String nextData = "";
     private BufferedImage image;
+    private BufferedImage haikei = Main.resource.image.load("res/haikei.JPG");
     public enum Chapter{
         PREPARE, READY, RUN, STOP, SHOW, CHANGE, END,
     }
@@ -95,6 +96,7 @@ public class Roulette {
     }
 
     public void draw(Graphics2D g){
+        g.drawImage(haikei, 0, 0, Main.FRAMESIZE_W, Main.FRAMESIZE_H, null);
         if (Main.isDebug){
             g.setColor(Color.GRAY);
             g.setFont(new Font("ＭＳ ゴシック", Font.BOLD, location.getFontSize(5)));
@@ -138,18 +140,18 @@ public class Roulette {
                 }else if (count >= 0){
                     count++;
                 }
-                if (count <= 200){
+                if (count <= 150){
                     g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(50)));
                     g.drawString(data[0], location.getWidthFontLocation(g, data[0], 50), location.getHeightFontLocation(g, 40));
-                }else if(count <= 300){
+                }else if(count <= 250){
                     //g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getAnimation(location.getFontSize(50), location.getFontSize(20), count-150)));
                     //g.drawString(data[0], location.getAnimation(location.getWidthFontLocation(g, data[0], 50), location.getWidthFontLocation(g, data[0], 20), count-150), location.getAnimation(location.getHeightFontLocation(g, 40), location.getHeightFontLocation(g, 80), count-150));
                     g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(50)));
                     g.drawString(data[0], location.getWidthFontLocation(g, data[0], 50), location.getHeightFontLocation(g, 40));
                     g.setStroke(wideStroke);
-                    g.drawRect(location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-200)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-200), location.getHeightLocation(65));
+                    g.drawRect(location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-150)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-150), location.getHeightLocation(65));
 
-                    g.drawImage(image, location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-200)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-200), location.getHeightLocation(65), null);
+                    g.drawImage(image, location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-150)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-150), location.getHeightLocation(65), null);
                 }else{
                     g.setStroke(wideStroke);
                     g.drawRect(location.getWidthLocation(50, location.getWidthLocation(34)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(34), location.getHeightLocation(65));
@@ -173,15 +175,15 @@ public class Roulette {
                 g.drawRect(location.getWidthLocation(50, location.getWidthLocation(34)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(34), location.getHeightLocation(65));
                 g.drawImage(image, location.getWidthLocation(50, location.getWidthLocation(34)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(34), location.getHeightLocation(65), null);
                 string = data[1];
-                if(count <= 300){
+                if(count <= 250){
                     g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(15)));
                     time = "01:00";
                     g.drawString(time, location.getWidthFontLocation(g, time, 84), location.getHeightFontLocation(g, 45));
                     //g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(20)));
                     //g.drawString(data[0], location.getWidthFontLocation(g, data[0], 20), location.getHeightFontLocation(g, 80));
                     g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(15)));
-                    if(string.length() > (count)/25){
-                        stringSize = (count)/25;
+                    if(string.length() > (count)/20){
+                        stringSize = (count)/20;
                     }else {
                         stringSize = string.length();
                     }
