@@ -145,14 +145,14 @@ public class Roulette {
                 if (count <= 150){
                     g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(50)));
                     g.drawString(data[0], location.getWidthFontLocation(g, data[0], 50), location.getHeightFontLocation(g, 40));
-                }else if(count <= 250){
+                }else if(count <= 200){
                     //g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getAnimation(location.getFontSize(50), location.getFontSize(20), count-150)));
                     //g.drawString(data[0], location.getAnimation(location.getWidthFontLocation(g, data[0], 50), location.getWidthFontLocation(g, data[0], 20), count-150), location.getAnimation(location.getHeightFontLocation(g, 40), location.getHeightFontLocation(g, 80), count-150));
                     g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(50)));
                     g.drawString(data[0], location.getWidthFontLocation(g, data[0], 50), location.getHeightFontLocation(g, 40));
                     g.setStroke(wideStroke);
-                    g.drawRect(location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-150)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-150), location.getHeightLocation(65));
-                    g.drawImage(image, location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-150)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-150), location.getHeightLocation(65), null);
+                    g.drawRect(location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), (count-150)*2)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), (count-150)*2), location.getHeightLocation(65));
+                    g.drawImage(image, location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), (count-150)*2)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), (count-150)*2), location.getHeightLocation(65), null);
                 }else{
                     g.setStroke(wideStroke);
                     g.drawRect(location.getWidthLocation(50, location.getWidthLocation(34)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(34), location.getHeightLocation(65));
