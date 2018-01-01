@@ -36,6 +36,7 @@ public class Roulette {
     private RouletteTimer timer;
     private Boolean isTimerInit = true;
     private Thread timerThread;
+    private int alpha;
 
     public Roulette(){
         memberList = new MemberList();
@@ -79,6 +80,7 @@ public class Roulette {
                 break;
             case SHOW:
                 if (Main.input.key.isJustPressed(KeyEvent.VK_ENTER)){
+                    count = 0;
                     chapter = Chapter.CHANGE;
                 }
                 break;
@@ -150,7 +152,6 @@ public class Roulette {
                     g.drawString(data[0], location.getWidthFontLocation(g, data[0], 50), location.getHeightFontLocation(g, 40));
                     g.setStroke(wideStroke);
                     g.drawRect(location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-150)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-150), location.getHeightLocation(65));
-
                     g.drawImage(image, location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-150)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(0), location.getWidthLocation(34), count-150), location.getHeightLocation(65), null);
                 }else{
                     g.setStroke(wideStroke);
@@ -205,6 +206,31 @@ public class Roulette {
                     }
                 break;
             case CHANGE:
+                if (count >= 55){
+                    chapter = Chapter.PREPARE;
+                }else if (count >= 0){
+                    count++;
+                }
+                g.setColor(Color.BLACK);
+                g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(50)));
+                string = "??";
+                g.drawString(string, location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 40));
+                if (count <= 50){
+                    g.setStroke(wideStroke);
+                    g.drawRect(location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(34), location.getWidthLocation(0), count*2)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(34), location.getWidthLocation(0), count*2), location.getHeightLocation(65));
+                    g.drawImage(image, location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(34), location.getWidthLocation(0), count*2)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(34), location.getWidthLocation(0), count*2), location.getHeightLocation(65), null);
+                    if (count*5 < 255){
+                        alpha = 255-count*5;
+                    }else{
+                        alpha = 0;
+                    }
+                    g.setColor(new Color(0, 0, 0, alpha));
+                    g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(15)));
+                    time = timer.getTimer();
+                    g.drawString(time, location.getWidthFontLocation(g, time, 84), location.getHeightFontLocation(g, 45));
+                    string = data[1];
+                    g.drawString(string, location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 80));
+                }
                 break;
             case END:
                 break;
