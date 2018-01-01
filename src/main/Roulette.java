@@ -212,6 +212,7 @@ public class Roulette {
                     }
                 break;
             case CHANGE:
+                if (remain == 1) chapter = Chapter.END;
                 if (count >= 55){
                     chapter = Chapter.PREPARE;
                 }else if (count >= 0){
@@ -239,6 +240,37 @@ public class Roulette {
                 }
                 break;
             case END:
+                if (count >= 150){
+                    count = 150;
+                }else if (count >= 0){
+                    count++;
+                }
+                if (count <= 50){
+                    g.setStroke(wideStroke);
+                    g.drawRect(location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(34), location.getWidthLocation(0), count*2)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(34), location.getWidthLocation(0), count*2), location.getHeightLocation(65));
+                    g.drawImage(image, location.getWidthLocation(50, location.getAnimation(location.getWidthLocation(34), location.getWidthLocation(0), count*2)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getAnimation(location.getWidthLocation(34), location.getWidthLocation(0), count*2), location.getHeightLocation(65), null);
+                    if (count*5 < 255){
+                        alpha = 255-count*5;
+                    }else{
+                        alpha = 0;
+                    }
+                    g.setColor(new Color(0, 0, 0, alpha));
+                    g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(15)));
+                    time = timer.getTimer();
+                    g.drawString(time, location.getWidthFontLocation(g, time, 84), location.getHeightFontLocation(g, 45));
+                    string = data[1];
+                    g.drawString(string, location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 80));
+                } else{
+                    if ((count-50)*5 < 255){
+                        alpha = (count-50)*5;
+                    }else{
+                        alpha = 255;
+                    }
+                    g.setColor(new Color(0, 0, 0, alpha));
+                    g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(34)));
+                    string = "おわり";
+                    g.drawString(string, location.getWidthFontLocation(g, string, 50), location.getHeightFontLocation(g, 50));
+                }
                 break;
         }
     }
