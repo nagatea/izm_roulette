@@ -177,6 +177,12 @@ public class Roulette {
                 g.drawImage(image, location.getWidthLocation(50, location.getWidthLocation(34)/2), location.getHeightLocation(35, location.getHeightLocation(65)/2), location.getWidthLocation(34), location.getHeightLocation(65), null);
                 string = data[1];
                 if(count <= 250){
+                    if (count*5 < 255){
+                        alpha = count*5;
+                    }else{
+                        alpha = 255;
+                    }
+                    g.setColor(new Color(0, 0, 0, alpha));
                     g.setFont(new Font("UD デジタル 教科書体 N-B", Font.BOLD, location.getFontSize(15)));
                     time = "01:00";
                     g.drawString(time, location.getWidthFontLocation(g, time, 84), location.getHeightFontLocation(g, 45));
